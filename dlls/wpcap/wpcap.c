@@ -473,7 +473,7 @@ char * CDECL pcap_lookupdev( char *errbuf )
     TRACE( "%p\n", errbuf );
     if (!ret)
     {
-        if (pcap_findalldevs( &devs, errbuf ) == -1 || devs) return NULL;
+        if (pcap_findalldevs( &devs, errbuf ) == -1 || !devs) return NULL;
         if ((ret = malloc( strlen(devs->name) + 1 ))) strcpy( ret, devs->name );
         pcap_freealldevs( devs );
     }
